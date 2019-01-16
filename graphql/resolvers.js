@@ -1,7 +1,10 @@
 /*Query를 처리하는것 (Resolve) */
+import { getMovies, getById } from "./db"
+
 const resolvers = {
     Query: {
-        name: () => "Its Query name"
+        movies: () => getMovies(),
+        movie: (_, { id }) => getById(id)
     }
 }
 
