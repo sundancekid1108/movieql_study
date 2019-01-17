@@ -23,16 +23,27 @@ let movies = [{
 export const getMovies = () => movies
 
 export const getById = (id) => {
-    const filteredMovies = movies.filter(movie => movie.id === String(id))
+    const filteredMovies = movies.filter(movie => movie.id === id)
     return filteredMovies[0]
 }
 
-export const deleteMovie = (id) => {
-        const cleanedMovies = movies.filter(movie => movie.id !== String(id))
+export const deleteMovie = id => {
+        const cleanedMovies = movies.filter(movie => movie.id !== id)
         if (movies.length > cleanedMovies.length) {
-            movie = cleanedMovies
+            movies = cleanedMovies
             return true
         } else {
             return false
         }
     } // delete한 ID를 제외한 나머지것들을 모음..
+
+export const addMovie = (name, score) => {
+    const newMovie = {
+        id: movies.length + 1,
+        name,
+        score
+    }
+
+    movies.push(newMovie)
+    return newMovie
+}
